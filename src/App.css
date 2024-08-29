@@ -1,0 +1,109 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root{
+  --index: calc(1vw + 1vh);
+  --transition: 2s cubic-bezier(.05, .5, 0, 1);
+}
+
+@font-face {
+  font-family: kamerik-3d;
+  src: url('./assets/fonts/kamerik205-heavy.woff2');
+  font-weight: 900;
+}
+@font-face {
+  font-family: merriweather-italic-3d;
+  src: url('./assets/fonts/merriweather-regular-italic.woff2');
+}
+
+body{
+  background-color: #000;
+  color: #fff;
+  font-family: kamerik-3d;
+}
+
+.layers{
+  perspective: 1000px;
+  overflow: hidden;
+}
+.layers_container{
+  height: 100vh;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--y)) rotateY(var(--x));
+  min-height: 500px;
+  will-change: transform;
+  transition: transform var(--transition);
+}
+.layers_item{
+  position: absolute;
+  /* top: -5vw;
+  left: -5vw;
+  right: -5vw;
+  bottom: -5vw; */
+  inset: -5vw;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1s;
+  will-change: transform;
+  z-index: 2;
+  
+}
+
+.layer-1{
+  transform: translateZ(-50px) scale(1.06);
+  background-image: url('./assets/img/lay-1.png');
+}
+.layer-2{
+  left: calc(50% - var(--logo-size) / 2);
+  /* top : calc(var(--index) * 3.8); */
+  --logo-size: calc(var(--index) * 40);
+  width: var(--logo-size);
+  height: var(--logo-size);
+  transform: translateZ(80px) scale(0.91);
+  background-image: url('./assets/img/lay-2.png');
+  
+}
+.layer-3{
+  transform: translateZ(180px) scale(.8);
+}
+
+.layer-4{
+  transform: translateZ(380px);
+  background-image: url('./assets/img/lay-6.png');
+  pointer-events: none;
+}
+
+.text-content{
+  font-size: calc(var(--index) * 2.4);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: calc(var(--index) * .15);
+  line-height: 1.35em;
+  margin-top: calc(var(--index) * 5);
+}
+.text-content_p{
+  text-transform: none;
+  font-family: merriweather-italic-3d;
+  letter-spacing: normal;
+  font-size: calc(var(--index) * .9);
+  line-height: 3;
+}
+.button-start{
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: calc(var(--index) * .9);
+  font-weight: 600;
+  letter-spacing: -.02vw;
+  padding: calc(var(--index) * .9);
+  border-radius: 10em;
+  color: #fff;
+  background-color: transparent;
+  border: #ffffff8b 3px solid;
+  outline: none;
+  cursor: pointer;
+}
